@@ -40,7 +40,7 @@ RetryStatePtr RetryStateImpl::create(const RetryPolicy& route_policy,
   RetryStatePtr ret;
 
   // We short circuit here and do not bother with an allocation if there is no chance we will retry.
-   if (request_headers.EnvoyRetryOn() || request_headers.EnvoyRetryGrpcOn() ||
+  if (request_headers.EnvoyRetryOn() || request_headers.EnvoyRetryGrpcOn() ||
       (route_policy.retryOn() && route_policy.numRetries() > 0)) {
     ret.reset(new RetryStateImpl(route_policy, request_headers, cluster, runtime, random,
                                  dispatcher, priority));
